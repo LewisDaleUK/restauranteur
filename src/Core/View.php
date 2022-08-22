@@ -11,7 +11,6 @@ class View {
 
 	public function __construct(
 		protected string $template_name,
-		protected ?object $data = null
 	) {
 		$loader = new \Twig\Loader\FilesystemLoader(__PROJECT_ROOT__ . '/views/');
 		$this->twig = new \Twig\Environment($loader, [
@@ -23,8 +22,8 @@ class View {
 	/**
 	 * Render the view
 	 */
-	public function render() {
-    return $this->template->render();
+	public function render(array $data = []) {
+    	return $this->template->render($data);
 	}
 }
 ?>

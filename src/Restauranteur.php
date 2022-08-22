@@ -7,7 +7,11 @@ require_once(__PROJECT_ROOT__ . "/vendor/autoload.php" );
 
 use Lewisdaleuk\Restauranteur\Core\View;
 
-$view = new View("index.phtml");
+$router = new \Bramus\Router\Router;
 
-echo $view->render();
+$router->get('/', function() {
+	$view = new View("index.phtml");
+	echo $view->render();
+});
 
+$router->run();
