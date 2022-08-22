@@ -3,7 +3,8 @@
     "type": "project",
     "require": {
         "klein/klein": "^2.1",
-        "ext-pdo": "*"
+        "ext-pdo": "*",
+        "twig/twig": "^3.4"
     },
     "autoload": {
         "psr-4": {
