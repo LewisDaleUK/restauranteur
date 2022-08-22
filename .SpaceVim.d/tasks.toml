@@ -1,0 +1,3 @@
+[docker-compose]
+	command = 'docker-compose'
+	args = ['up']

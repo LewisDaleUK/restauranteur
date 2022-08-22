@@ -1,0 +1,19 @@
+{
+    "name": "lewisdaleuk/restauranteur",
+    "type": "project",
+    "require": {
+        "klein/klein": "^2.1",
+        "ext-pdo": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Lewisdaleuk\\Restauranteur\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Lewis Dale",
+            "email": "projects@ihd.software"
+        }
+    ]
+}

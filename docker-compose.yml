@@ -1,0 +1,44 @@
+version: "3"
+services:
+  web:
+    image: nginx
+    volumes:
+    - ./scripts/nginx:/etc/nginx/templates
+    - .:/app
+    ports:
+    - 8080:80
+    environment:
+      - NGINX_HOST=localhost
+      - NGINX_PORT=80
+    depends_on:
+      - php
+  composer:
+    restart: 'no'
+    image: composer
+    command: install
+    volumes:
+     - .:/app
+  php:
+    build:
+      context: .
+      dockerfile: ./dockerfiles/Dockerfile_php
+    volumes:
+    - .:/app
+    environment:
+      - DB_HOST=db
+      - DB_USER=postgres
+      - DB_PASSWORD=password
+      - DB_NAME=restauranteur
+      - DB_DRIVER=pgsql
+    depends_on:
+      - composer
+  db:
+    image: postgres
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_DB=restauranteur
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=password
+    volumes:
+      - ./scripts/db/init.sql:/docker-entrypoint-initdb.d/init.sql
