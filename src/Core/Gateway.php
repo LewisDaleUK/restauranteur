@@ -33,8 +33,8 @@ abstract class Gateway {
 	/**
 	 * Map a database row into an instance of the object the Gateway controls
 	 * 
-	 * @param ?object - the database row
+	 * @param ?array - the database row as an associative array
 	 * @return ?object - an instance of the Model that the gateway represnets
 	 */
-	public abstract function map(?object $row) : ?object;
+	public abstract function map(?array $row) : ?object;
 }

@@ -25,14 +25,14 @@ class MenuGateway extends Gateway {
 		return $this->database->get_last_id();
 	}
 
-	public function map(?object $row): ?object {
+	public function map(?array $row): ?object {
 		if ($row === null) {
 			return null;
 		}
 
 		return new Menu(
-			id: $row->id,
-			title: $row->title
+			id: $row['id'],
+			title: $row['title']
 		);
 	}
 }

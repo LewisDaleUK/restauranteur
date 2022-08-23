@@ -101,8 +101,14 @@
     --color-neutral-dark: #404040;
     --color-neutral-light: #d4d4d4;
     --color-indigo: #312e81;
+    --color-indigo-100: #e0e7ff;
+    --color-blue-100: #dbeafe;
+    --color-slate-100: #f1f5f9;
+    --color-slate-200: #e2e8f0;
+    --color-slate-300: #cbd5e1;
     --color-primary: var(--color-black);
     --color-secondary: var(--color-white);
+    --color-bg: var(--color-slate-100);
 }
 
 * {
@@ -183,8 +189,8 @@ ul {
 	max-width: 50ch;
 }
 
-
 body {
+    background-color: var(--color-bg);
     font-size: var(--text-sm);
     min-height: 100%;
     margin: 0;

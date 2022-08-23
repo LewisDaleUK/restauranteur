@@ -1,0 +1,14 @@
+{% extends "includes/base.phtml" %}
+
+{% block title %}Add menu | Restauranteur{% endblock %}
+
+{% block content %}
+<h1>Add a menu</h1>
+
+<form method="post">
+	<label for="title">Menu title:</label>
+	<input type="text" name="title" id="title" />
+
+	<button>Add menu</button>
+</form>
+{% endblock %}

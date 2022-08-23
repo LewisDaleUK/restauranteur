@@ -55,8 +55,12 @@ class Database
         $this->execute($query);
     }
 
-    private function escape(string $unescapedString) : string {
-        return $this->connection->quote($unescapedString);
+    private function escape(mixed $unescapedString) : string {
+        if ($unescapedString instanceof string) {
+            return $this->connection->quote($unescapedString);
+        }
+
+        return $unescapedString;
     }
 
     public function get_results() : array {
@@ -72,7 +76,7 @@ class Database
             return $query;
         }
 
-        return sprintf($query, ...array_map(fn($x) => $this->escape(strval($x)), $args));
+        return sprintf($query, ...array_map(fn($x) => $this->escape($x), $args));
     }
 
     public function get_first_result() {

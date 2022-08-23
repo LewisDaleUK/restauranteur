@@ -32,16 +32,16 @@ class ProductGateway extends Gateway {
 		return $this->database->get_last_id();
 	}
 
-	public function map(?object $row): ?object {
+	public function map(?array $row): ?object {
 		if ($row === null) {
 			return null;
 		}
 
 		return new Product(
-			id: $row->id,
-			title: $row->title,
-			price: $row->price,
-			menu: (new MenuGateway())->get($row->menu_id)
+			id: $row['id'],
+			title: $row['title'],
+			price: $row['price'],
+			menu: (new MenuGateway())->get($row['menu_id'])
 		);
 	}
 }

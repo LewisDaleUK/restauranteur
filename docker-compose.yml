@@ -5,6 +5,7 @@ services:
     volumes:
     - ./scripts/nginx:/etc/nginx/templates
     - .:/app
+    - ./logs/:/var/log/nginx
     ports:
     - 8080:80
     environment:
