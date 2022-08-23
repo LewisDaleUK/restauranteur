@@ -25,7 +25,7 @@ abstract class Gateway {
 		$this->database->build_and_execute(
 			"SELECT * FROM {$this->table} LIMIT %d OFFSET %d", $per_page, ($page - 1) * $per_page
 		);
-		return array_map($this->map, $this->database->get_results());
+		return array_map([$this, 'map'], $this->database->get_results());
 	}
 
 	public abstract function save(object $instance): int;
