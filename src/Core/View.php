@@ -14,7 +14,8 @@ class View {
 	) {
 		$loader = new \Twig\Loader\FilesystemLoader(__PROJECT_ROOT__ . '/views/');
 		$this->twig = new \Twig\Environment($loader, [
-			'cache' => __PROJECT_ROOT__ . '/.cache',
+			// 'cache' => __PROJECT_ROOT__ . '/.cache',
+			'cache' => false
 		]);
 		$this->template = $this->twig->load($template_name);
 	}
