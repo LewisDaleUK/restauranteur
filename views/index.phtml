@@ -7,7 +7,19 @@
 
 <ul>
 {% for menu in menus %}
-	<li>{{ menu.title }}</li>
+	<li>
+		{{ menu.title }}
+
+		<ul>
+		{% for product in menu.products %}
+			<li>{{ product.title }} - {{ product.price|format_currency('GBP') }}</li>
+		{% endfor %}
+		</ul>
+
+		<a href="/menu/{{ menu.id }}/product/add">Add a product</a>
+	</li>
 {% endfor %}
 </ul>
+
+<a href="/menu/add">Add a new menu</a>
 {% endblock %}

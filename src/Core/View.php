@@ -2,6 +2,8 @@
 
 namespace Lewisdaleuk\Restauranteur\Core;
 
+use Twig\Extra\Intl\IntlExtension;
+
 /**
  * Root class for representing a view. Handles rendering a template via the render function
  */
@@ -17,6 +19,7 @@ class View {
 			// 'cache' => __PROJECT_ROOT__ . '/.cache',
 			'cache' => false
 		]);
+		$this->twig->addExtension(new IntlExtension());
 		$this->template = $this->twig->load($template_name);
 	}
 

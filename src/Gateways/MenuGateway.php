@@ -20,7 +20,7 @@ class MenuGateway extends Gateway {
 		}
 
 		$this->database->build_and_execute(
-			"INSERT INTO {$this->table} (title) VALUES (%s)", $instance->title
+			"INSERT INTO {$this->table} (title) VALUES ('%s')", $instance->title
 		);
 		return $this->database->get_last_id();
 	}
@@ -30,9 +30,12 @@ class MenuGateway extends Gateway {
 			return null;
 		}
 
-		return new Menu(
+		$menu = new Menu(
 			id: $row['id'],
-			title: $row['title']
+			title: $row['title'],
 		);
+		$menu->products = (new ProductGateway())->list_by_menu($menu);
+
+		return $menu;
 	}
 }

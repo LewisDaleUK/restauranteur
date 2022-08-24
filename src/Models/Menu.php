@@ -4,8 +4,9 @@ namespace Lewisdaleuk\Restauranteur\Models;
 
 class Menu {
 	public function __construct(
-		public int $id,
-		public string $title
+		public string $title,
+		public ?int $id = 0,
+		public array $products = []
 	)
 	{}
 }
